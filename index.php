@@ -21,39 +21,40 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Coordenadas de las capitales de las provincias argentinas
+// Coordenadas de las capitales de las provincias argentinas con imágenes y descripciones
 var provinces = [
-    { name: 'Buenos Aires', lat: -34.6118, lng: -58.4173 },
-    { name: 'Catamarca', lat: -28.4696, lng: -65.7852 },
-    { name: 'Chaco', lat: -27.4512, lng: -58.9865 },
-    { name: 'Chubut', lat: -43.2983, lng: -65.1000 },
-    { name: 'Córdoba', lat: -31.4135, lng: -64.1811 },
-    { name: 'Corrientes', lat: -27.4692, lng: -58.8300 },
-    { name: 'Entre Ríos', lat: -31.7456, lng: -60.5186 },
-    { name: 'Formosa', lat: -26.1849, lng: -58.1731 },
-    { name: 'Jujuy', lat: -24.1858, lng: -65.2995 },
-    { name: 'La Pampa', lat: -36.6167, lng: -64.2833 },
-    { name: 'La Rioja', lat: -29.4135, lng: -66.8558 },
-    { name: 'Mendoza', lat: -32.8908, lng: -68.8272 },
-    { name: 'Misiones', lat: -27.3627, lng: -55.8960 },
-    { name: 'Neuquén', lat: -38.9516, lng: -68.0591 },
-    { name: 'Río Negro', lat: -39.0333, lng: -67.5833 },
-    { name: 'Salta', lat: -24.7829, lng: -65.4232 },
-    { name: 'San Juan', lat: -31.5375, lng: -68.5364 },
-    { name: 'San Luis', lat: -33.2950, lng: -66.3356 },
-    { name: 'Santa Cruz', lat: -51.6226, lng: -69.2181 },
-    { name: 'Santa Fe', lat: -31.6247, lng: -60.6850 },
-    { name: 'Santiago del Estero', lat: -27.7834, lng: -64.2669 },
-    { name: 'Tierra del Fuego', lat: -54.8019, lng: -68.3029 },
-    { name: 'Tucumán', lat: -26.8083, lng: -65.2176 }
+    { 
+        name: 'Buenos Aires', 
+        lat: -34.6118, 
+        lng: -58.4173, 
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzEBkGm_1w3qZCYNN53TSqNIKeYjo_SCZYKA&s', // URL de la imagen
+        description: 'Buenos Aires es la capital de Argentina.'
+    },
+    { 
+        name: 'Catamarca', 
+        lat: -28.4696, 
+        lng: -65.7852, 
+        image: 'https://example.com/catamarca.jpg', 
+        description: 'Catamarca es conocida por su belleza natural.'
+    },
+    // Agrega más provincias aquí con sus respectivas imágenes y descripciones
 ];
 
 // Agregar marcadores para cada provincia
 provinces.forEach(function(province) {
+    var popupContent = `
+        <div>
+            <h3>${province.name}</h3>
+            <img src="${province.image}" alt="${province.name}" style="width:100%;height:auto;">
+            <p>${province.description}</p>
+        </div>
+    `;
+
     L.marker([province.lat, province.lng]).addTo(map)
-        .bindPopup(province.name);
+        .bindPopup(popupContent);
 });
 </script>
 
 </body>
 </html>
+
