@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<div id="map" style="height: 500px; width: 100%;"></div>
+<div id="map" style="height: 500px; width: 50%;"></div>
 
 <script>
 // Inicializar el mapa centrado en Argentina
